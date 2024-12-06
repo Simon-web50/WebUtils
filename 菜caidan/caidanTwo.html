@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body >
+<h1>如果你能看见我，说明你成功了</h1>
+<hr>
+您的用户名是:${user.username}<br>
+您的密码是:${user.userpwd}<br>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+        html,body{
+            height: 100%;
+        }
+        .menu-list{
+            height: 100%;
+            padding-top:20px;
+            font-size:18px;
+            background-color: #2e3254;
+        }
+        .menu-list ul{
+            list-style: none;
+            padding:0;
+            margin:0 auto;
+        }
+        .menu-list ul li{
+            text-align:left;
+            color: #616c82;
+        }
+        .menu-list ul li.first-menu{
+            overflow: hidden;
+        }
+        .menu-list ul li:HOVER>a{
+            color: #007FC8;
+        }
+        .menu-list ul li a{
+            display:block;
+            padding:16px 0;
+            color: #5f78a2;
+            text-decoration:none;
+        }
+        .menu-list ul li.first-menu>a{
+            padding-left: 15px;
+        }
+        .menu-list ul li.first-menu.active>a{
+            color: #1c9dff;
+            vertical-align: middle;
+        }
+        .menu-list ul li.first-menu.active ul li.second-menu.current a{
+            background-color: #4d527c;
+            font-size: 18px;
+        }
+        .menu-list ul li.first-menu ul{
+            display:none;
+        }
+        .menu-list ul li.first-menu ul li.second-menu a{
+            padding: 12px 0 12px 31px;
+            font-size:16px;
+            color: #8aa3cd;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.8.2.min.js"></script>
+<div class="menu-list">
+    <ul>
+        <li class="first-menu">
+            <a href="javascript:;">首页</a>
+        </li>
+        <li class="first-menu">
+            <a href="javascript:;">菜单1</a>
+            <ul>
+                <li class="second-menu">
+                    <a href="javascript:;">子菜单1-1</a>
+                </li>
+                <li class="second-menu">
+                    <a href="javascript:;">子菜单1-2</a>
+                </li>
+                <li class="second-menu">
+                    <a href="javascript:;">子菜单1-3</a>
+                </li>
+                <li class="second-menu">
+                    <a href="javascript:;">子菜单1-4</a>
+                </li>
+            </ul>
+        </li>
+        <li class="first-menu">
+            <a href="javascript:;">菜单2</a>
+            <ul>
+                <li class="second-menu">
+                    <a href="javascript:;">子菜单2-1</a>
+                </li>
+                <li class="second-menu">
+                    <a href="javascript:;">子菜单2-2</a>
+                </li>
+                <li class="second-menu">
+                    <a href="javascript:;">子菜单2-3</a>
+                </li>
+            </ul>
+        </li>
+        <li class="first-menu">
+            <a href="javascript:;">菜单3</a>
+            <ul>
+                <li class="second-menu">
+                    <a href="javascript:;">子菜单3-1</a>
+                </li>
+                <li class="second-menu">
+                    <a href="javascript:;">子菜单3-2</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    $(".menu-list .first-menu").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+        $(this).find("ul").slideToggle(500);
+        $(this).siblings().find("ul").hide();
+    });
+    $(".menu-list .second-menu").click(function(){
+        var $this = $(this);
+        $(".second-menu").each(function () {
+            if($(this).hasClass("current")){
+                $(this).removeClass("current");
+            }
+        })
+        $this.addClass("current").siblings().removeClass("current");
+    });
+    //  阻止事件冒泡
+    $(".menu-list .first-menu ul").bind("click",function(event){
+        event.stopPropagation();
+    });
+</script>

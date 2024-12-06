@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="refresh" content="1">
+  <style>
+    html,body {
+      height: 100%;
+    }
+    body {
+      background: #9bb1bf;
+      background: radial-gradient(ellipse at center,  #0d5b71  0%, #191818 70%);
+      background-size: 100%;
+    }
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    #clock {
+      font-family: 'Share Tech Mono', monospace;
+      color: #ffffff;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: #daf6ff;
+      text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    }
+    #date{
+      letter-spacing: 0.1em;
+      font-size: 24px;
+    }
+
+    #time {
+      letter-spacing: 0.05em;
+      font-size: 80px;
+      padding: 5px 0;
+    }
+    .text {
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      padding: 20px 0 0;
+    }
+  </style>
+
+  <script>
+
+    var today = new Date();
+
+    //日期
+    var DD = String(today.getDate()).padStart(2, '0'); // 获取日
+    var MM = String(today.getMonth() + 1).padStart(2, '0'); //获取月份，1 月为 0
+    var yyyy = today.getFullYear(); // 获取年
+    date = yyyy + '-' + MM + '-' + DD;
+
+
+    //星期
+    var week = today.getDay();//获取星期
+    console.log(week)//控制台显示星期
+
+    // 时间
+    hh =  String(today.getHours()).padStart(2, '0');       //获取当前小时数(0-23)
+    mm = String(today.getMinutes()).padStart(2, '0');     //获取当前分钟数(0-59)
+    ss = String(today.getSeconds()).padStart(2, '0');     //获取当前秒数(0-59)
+    time = hh + ':' + mm + ':' + ss;
+
+  </script>
+
+</head>
+
+<body>
+<div id="clock">
+  <p id="date">date</p>
+  <p id="time">time</p>
+  <p class="text">DIGITAL CLOCK </p>
+</div>
+
+<script>
+  document.getElementById("date").innerHTML=date;
+  document.getElementById("time").innerHTML=time;
+</script>
+
+</body>
+
+</html>

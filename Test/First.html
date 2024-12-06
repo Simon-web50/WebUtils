@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习一</title>
+  <style>
+    body {
+        display: flex;
+        justify-content: center; /* 水平居中 */
+        align-items: center; /* 垂直居中 */
+        height: 100vh; /* 使容器高度等于视口高度 */
+        background-color: black;
+    }
+    .First {
+        width: 500px;
+        height: 350px;
+        margin-top: 50px;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding-left: 50px;
+        padding-top: 50px;
+        padding-right: 50px;
+        background-color: yellowgreen;
+    }
+    .Second {
+        height: 50px;
+        color: red;
+        font-size: 38px;
+        text-align: center;
+        background-color: white;
+    }
+    .Third-a {
+        top: 50px;
+        height: 300px;
+        width: 500px;
+        background-color: yellow;
+    }
+    .Third-b {
+        display: grid;
+        place-items: center;
+        gap: 10px;
+        border: 1px solid #000;
+    }
+    .btn {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+    .font::placeholder {
+        text-transform: uppercase;
+    }
+    font {
+        height: 100px;
+    }
+  </style>
+</head>
+<body>
+<div class="First">
+    <div class="Third-a">
+        <div class="Second">登录</div>
+        <div class="Third-b">
+            <input type="text" name="username" placeholder="username" class="font"><br>
+            <input type="password" name="password" placeholder="password" class="font">
+            <div class="btn">Login</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

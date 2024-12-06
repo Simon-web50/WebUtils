@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ECharts 频繁序列模式</title>
+  <script src="js/echarts.min.js"></script>
+</head>
+
+<body>
+<div id="main" style="width: 1000px;height:700px;border:1px solid #ccc;margin: 0 auto;margin-top:200px"></div>
+<script type="text/javascript">
+  var myChart = echarts.init(document.getElementById('main'));
+  var obj = {
+    relationList: {
+      data: [
+        {
+          name: '外科护理',
+          symbolSize: 150,
+        }, {
+          name: '护理学研究',
+          symbolSize: 120,
+        }, {
+          name: '社区护理',
+          symbolSize: 120,
+        },
+        {
+          name: '老年护理',
+          symbolSize: 120,
+        },
+        {
+          name: '中医养生',
+          symbolSize: 120,
+        },
+        {
+          name: '临床学',
+          symbolSize: 120,
+        }
+      ],
+      link: [
+        {
+          source: '外科护理',
+          target: '护理学研究',
+          name: '关联',
+        }, {
+          source: '外科护理',
+          target: '社区护理',
+          name: '关联',
+        },
+        {
+          source: '外科护理',
+          target: '老年护理',
+          name: '关联',
+        },
+        {
+          source: '外科护理',
+          target: '中医养生',
+          name: '关联',
+        },
+        {
+          source: '外科护理',
+          target: '临床学',
+          name: '关联',
+        }
+      ]
+
+    }
+
+  }
+
+  var relationData = obj.relationList;
+  var data = relationData.data;
+  var link = relationData.link;
+  option = {
+
+    series: [{
+      type: 'graph', // 类型:关系图
+      layout: 'force', //图的布局，类型为力导图
+      symbolSize: 5, // 调整节点的大小
+      roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+      edgeSymbol: ['circle'],
+      edgeSymbolSize: [10, 20],
+      edgeLabel: {
+        normal: {
+          textStyle: {
+            fontSize: 20
+          }
+        }
+      },
+      force: {
+        repulsion: 1500,
+        edgeLength: [100, 250]
+      },
+      draggable: true,
+      lineStyle: {
+        normal: {
+          width: 20,
+          color: '#ff0000'
+        }
+      },
+      edgeLabel: {
+        normal: {
+          color: '#ff0000',
+          // 线上的字体颜色
+          show: true,
+          formatter: function (x) {
+            return x.data.name;
+          }
+        }
+      },
+      label: {
+        normal: {
+          show: true,
+          textStyle: {}
+        }
+      },
+
+      // 数据
+      data: data,
+      links: link,
+      color: ['#0d9e9e']
+    }]
+  };
+  myChart.setOption(option);
+</script>
+</body>
+
+</html>
